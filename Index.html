@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing App</title>
+    <style>
+        body {
+            font-family: serif;
+            margin: 0;
+            padding: 20px;
+        }
+        textarea {
+            width: 30rem;
+            margin: 0 auto;
+            height: 90vh;
+            padding: 3rem;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <textarea id="writingArea" placeholder="Start writing..."></textarea>
+
+    <script>
+        const writingArea = document.getElementById('writingArea');
+
+        // Load saved content from localStorage when the page is loaded
+        window.addEventListener('load', () => {
+            const savedText = localStorage.getItem('writingContent');
+            if (savedText) {
+                writingArea.value = savedText;
+            }
+        });
+
+        // Save content to localStorage when typing
+        writingArea.addEventListener('input', () => {
+            localStorage.setItem('writingContent', writingArea.value);
+        });
+    </script>
+
+</body>
+</html>
